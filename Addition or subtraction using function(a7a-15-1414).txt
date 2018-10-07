@@ -1,0 +1,93 @@
+.model small
+.stack 100h
+.data
+fmsg dw "Please input first and second number : $"
+fmsg2 dw "Addition two number is $"
+fmsg3 dw "Subtraction of two number is $" 
+fmsg4 dw "Do you went to addition or sutration $"
+
+
+MAIN PROC 
+    
+    
+    mov ax,@data
+    mov ds,ax
+    
+    lea dx,fmsg
+    mov ah,9
+    int 21h
+    
+    MOV AH,1
+    INT 21H
+    
+    MOV BL,AL
+    INT 21H
+    MOV CH, AL
+     
+     MOV AH,2
+     MOV DL,0AH
+     INT 21H
+     MOV DL,0DH
+     INT 21H
+     
+    lea dx,fmsg4
+    mov ah,9
+    int 21h
+     
+           
+    mov ah,1
+    int 21h
+    mov cl,al
+    ;int 21h
+    
+    
+     MOV AH,2
+     MOV DL,0AH
+     INT 21H
+     MOV DL,0DH
+     INT 21H 
+    
+    cmp cl,61h
+    je g
+        
+    lea dx,fmsg3
+    mov ah,9
+    int 21h
+    
+    SUB BL,CH
+    MOV AH,2
+    add bl,48
+    INT 21H
+    MOV DL,BL
+    INT 21H 
+   
+   
+   jmp end_if
+       
+     g:  
+    lea dx,fmsg2
+    mov ah,9
+    int 21h 
+    
+     
+     ADD BL,CH
+     
+     MOV AH,2
+     MOV DL,0AH
+     INT 21H
+     MOV DL,0DH
+     INT 21H
+     
+     MOV AH,2
+     SUB BL,30h
+     MOV DL,BL
+     INT 21H
+     
+     
+     
+     end_if:
+     
+     MOV AH,4CH
+     INT 21H
+     MAIN ENDP
+END MAIN
