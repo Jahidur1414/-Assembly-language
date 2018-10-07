@@ -1,0 +1,28 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+
+V1 DB '2'
+V2 DB '?'
+
+
+MAIN PROC 
+    
+    mov ax,@data
+    mov ds,ax
+    
+    MOV V2,'2'
+    
+    MOV AH,2
+    INT 21H
+    MOV DL,V1
+    INT 21H
+    MOV DL,V2
+    INT 21H
+    
+    
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+END MAIN

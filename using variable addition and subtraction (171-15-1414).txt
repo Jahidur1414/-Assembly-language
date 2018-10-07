@@ -1,0 +1,80 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+
+V1 DB '?'
+V2 DB '?'
+fmsg dw "Please input a upper latter : $"
+fmsg2 dw "Sorry $" 
+fmsg3 dw "Subtraction of two number is $"
+
+MAIN PROC 
+    
+    mov ax,@data
+    mov ds,ax
+    
+    lea dx,fmsg
+    mov ah,9
+    int 21h
+           
+    CALL NEWLINE
+    
+    MOV AH,1
+    INT 21H
+    MOV V1,AL
+    ;INT 21H
+    
+    CALL NEWLINE
+    
+    CMP V1,5AH
+    JLE G
+    
+    lea dx,fmsg2
+    mov ah,9
+    int 21h
+    
+    CALL NEWLINE
+     
+     jmp end_if
+     
+     G:
+     CMP V1,41H
+     JL K 
+     
+     MOV AH,2
+     INT 21H
+     ADD V1,32
+     MOV DL,V1
+     INT 21H
+     jmp end_if
+     
+     
+     K:
+    lea dx,fmsg2
+    mov ah,9
+    ;int 21h
+    
+    CALL NEWLINE
+     
+     jmp end_if
+     
+    
+ 
+    
+    end_if:
+    
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+
+    NEWLINE PROC
+    MOV AH,2
+     MOV DL,0AH
+     INT 21H
+     MOV DL,0DH
+     INT 21H
+     
+     RET
+     NEWLINE ENDP
+END MAIN
