@@ -1,0 +1,72 @@
+.stack 100h
+.model small
+.data
+
+fmsg DW "Input : $"
+bmsg DW "Output : $" 
+
+
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax
+    
+    Start:
+    
+    lea dx,fmsg
+    mov ah,9
+    int 21h
+    
+    mov ah,1
+    int 21h
+    mov bl,al
+    
+    call Newline
+    call Newline
+    
+    cmp bl,65
+    je stop
+    
+    cmp bl,90
+    jle stop
+    
+    lea dx,bmsg
+    mov ah,9
+    int 21h
+    
+    mov ah,2
+    int 21h
+    mov dl,bl
+    int 21h
+    
+    call Newline
+    call Newline
+    
+    jmp start
+    
+    
+    stop:
+    
+    jmp end_if
+    
+    
+    end_if: 
+    
+    
+    
+    main endp
+
+    Newline proc
+        
+    mov ah,2
+    mov dl,0ah
+    int 21h
+    mov dl,0dh
+    int 21h
+    
+    ret
+    
+    Newline endp
+    
+end main

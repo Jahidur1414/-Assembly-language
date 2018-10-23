@@ -1,0 +1,64 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+
+V1 DB '?'
+V2 DB '?'
+fmsg dw "Display the stars.......: $"  
+fmsg5 dw "Your input is grater than 5... $"
+fmsg2 dw "Your input is equal to 5....$" 
+fmsg3 dw "Your input is less than 5... $"
+
+
+MAIN PROC 
+    
+    mov ax,@data
+    mov ds,ax
+    
+  TOP:
+   lea dx,fmsg
+    mov ah,9
+    int 21h 
+    
+    MOV AH,1
+    INT 21H
+    MOV CH,AL
+    ;INT 21H
+    
+     CALL NEWLINE
+     
+     CMP CH,'Y'
+     JE E
+     
+     MOV AH,2
+     INT 21H
+     MOV DL,CH
+     INT 21H
+     
+      CALL NEWLINE 
+      
+      JMP TOP
+      
+      
+      E:
+      jmp end_if
+    
+ 
+    
+    end_if:
+    
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+
+    NEWLINE PROC
+    MOV AH,2
+     MOV DL,0AH
+     INT 21H
+     MOV DL,0DH
+     INT 21H
+     
+     RET
+     NEWLINE ENDP
+END MAIN

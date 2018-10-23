@@ -1,0 +1,93 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+
+V1 DB '?'
+V2 DB '?'
+fmsg dw "Please input.......: $"  
+fmsg5 dw "Your input is grater than 5... $"
+fmsg2 dw "Your input is equal to 5....$" 
+fmsg3 dw "Your input is less than 5... $"
+
+
+MAIN PROC 
+    
+    mov ax,@data
+    mov ds,ax
+    
+ 
+   lea dx,fmsg
+    mov ah,9
+    int 21h 
+    
+    MOV AH,1
+    INT 21H
+    MOV BH,AL
+    INT 21H
+    MOV CH,AL
+    INT 21H
+    MOV DH,AL
+    
+    
+    CALL NEWLINE
+    
+    CMP BH,CH
+    JG BB
+    BB:
+    CMP BH,DH
+    JG B
+    
+    CMP CH,BH
+    JG CC
+    CC:
+    CMP CH,DH
+    JG C
+    
+    CMP DH,BH
+    JG DD
+    DD:
+    CMP DH,CH
+    JG D
+    
+    
+    B:
+    MOV AH,2
+    INT 21H
+    MOV DL, BH
+    INT 21H
+    CALL NEWLINE
+    jmp end_if
+      
+    C:
+    MOV AH,2
+    INT 21H
+    MOV DL, CH
+    INT 21H
+    CALL NEWLINE
+    jmp end_if
+    
+    D:
+    MOV AH,2
+    INT 21H
+    MOV DL, DH
+    INT 21H
+    CALL NEWLINE
+    jmp end_if
+    
+    end_if:
+    
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+
+    NEWLINE PROC
+    MOV AH,2
+    MOV DL,0AH
+    INT 21H
+    MOV DL,0DH
+    INT 21H
+     
+     RET
+     NEWLINE ENDP
+END MAIN
