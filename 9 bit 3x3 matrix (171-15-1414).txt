@@ -1,0 +1,89 @@
+.stack 100h
+.model small
+.data
+
+fmsg dw "J.R.F $"
+bmsg dw "  $"
+
+.code
+
+main proc
+    
+    mov ax,@data
+    mov ds,ax
+    
+    mov ah,1
+    int 21h
+    mov bh,al
+    
+    call newline
+             
+             
+    mov bl,'0'
+    mov ch,'0'
+    ;xor ch,ch
+    ;xor cl,cl
+    
+    while:
+    
+    add bl,'1'
+    add ch,'1'
+    sub ch,48
+    
+    cmp ch,'3'
+    je nn
+    
+    mov ah,2
+    int 21h
+    sub bl,48
+    mov dl,bl
+    ;mov dl,ch
+    int 21h
+    
+    lea dx,bmsg
+    mov ah,9
+    int 21h
+    
+    cmp bl,bh
+    je ee
+    
+    jmp while 
+    
+    nn:
+    mov ah,2
+    int 21h
+    sub bl,48
+    mov dl,bl
+    int 21h
+    call newline
+    mov dh,'0'
+    jmp while
+    
+    ee:
+    call newline
+    jmp stop
+    
+    stop:
+    jmp end_if
+    
+    end_if:
+    
+    mov ah,4ch
+    int 21h
+    main endp
+
+    
+    newline proc
+        mov ah,2
+        mov dl,0ah
+        int 21h
+        mov dl,0dh
+        int 21h
+        
+        ret
+        newline endp
+ end main
+    
+     
+    
+    
