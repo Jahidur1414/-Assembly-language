@@ -1,0 +1,109 @@
+.stack 100h
+.model small
+.data
+
+fmsg DW "Hello World$"
+fmsg1 DW "      H$" 
+fmsg2 DW "      e$"
+fmsg3 DW "      l$"
+fmsg4 DW "      l$"
+fmsg5 DW "      o$"
+fmsg6 DW "      W$"
+fmsg7 DW "      o$"
+fmsg8 DW "      r$"
+fmsg9 DW "      l$"
+fmsg10 DW "      d$"
+
+
+
+
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax 
+    
+    lea dx,fmsg
+    mov ah,9
+    int 21h
+    
+    call newline 
+    call newline
+    
+    lea dx,fmsg1
+    mov ah,9
+    int 21h
+    call newline 
+    
+    lea dx,fmsg2
+    mov ah,9
+    int 21h
+    call newline
+    
+    lea dx,fmsg3
+    mov ah,9
+    int 21h
+    call newline
+    
+    lea dx,fmsg4
+    mov ah,9
+    int 21h
+    call newline
+    
+    lea dx,fmsg5
+    mov ah,9
+    int 21h
+    call newline
+    call newline
+    
+    lea dx,fmsg6
+    mov ah,9
+    int 21h
+    call newline
+    
+    lea dx,fmsg7
+    mov ah,9
+    int 21h
+    call newline
+    
+    lea dx,fmsg8
+    mov ah,9
+    int 21h
+    call newline 
+    
+    lea dx,fmsg9
+    mov ah,9
+    int 21h
+    call newline
+    
+    lea dx,fmsg10
+    mov ah,9
+    int 21h
+    call newline
+    
+    
+    
+    stop:
+    
+    jmp end_if
+    
+    
+    end_if: 
+    
+    
+    
+    main endp
+
+    Newline proc
+        
+    mov ah,2
+    mov dl,0ah
+    int 21h
+    mov dl,0dh
+    int 21h
+    
+    ret
+    
+    Newline endp
+    
+end main 
