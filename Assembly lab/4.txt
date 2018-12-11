@@ -1,0 +1,73 @@
+.stack 100h
+.model small
+.data
+
+fmsg DW "Input uppercase letter: $"
+fmsg2 DW "Output in lowercase letter: $" 
+fmsg3 DW "Wrong input !!$" 
+
+
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax 
+    
+    lea dx,fmsg
+    mov ah,9
+    int 21h
+    
+    mov ah,1
+    int 21h
+    mov bh,al
+    
+    cmp bh,'A'
+    jge dd
+    
+    dd:
+    cmp bh,'Z'
+    jle kk
+    
+    call newline
+    lea dx,fmsg3
+    mov ah,9
+    int 21h
+    call newline
+    jmp stop
+    
+    kk:
+    call newline 
+    lea dx,fmsg2
+    mov ah,9
+    int 21h
+    add bh,32
+    mov ah,2
+    int 21h
+    mov dl,bh
+    int 21h
+    jmp stop
+    
+    stop:
+    
+    jmp end_if
+    
+    
+    end_if: 
+    
+    
+    
+    main endp
+
+    Newline proc
+        
+    mov ah,2
+    mov dl,0ah
+    int 21h
+    mov dl,0dh
+    int 21h
+    
+    ret
+    
+    Newline endp
+    
+end main 

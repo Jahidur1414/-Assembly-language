@@ -1,0 +1,56 @@
+.stack 100h
+.model small
+.data
+
+fmsg DW "Input : $" 
+
+ 
+
+
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax
+    
+     while:
+    lea dx,fmsg
+    mov ah,9
+    int 21h 
+    mov ah,1
+    int 21h
+    mov bh,al
+    
+    cmp bh,'Y'
+    je stop
+    
+    call newline
+    jmp while
+    
+    
+     
+    
+    stop:
+    
+    jmp end_if
+    
+    
+    end_if: 
+    
+    
+    
+    main endp
+
+    Newline proc
+        
+    mov ah,2
+    mov dl,0ah
+    int 21h
+    mov dl,0dh
+    int 21h
+    
+    ret
+    
+    Newline endp
+    
+end main
