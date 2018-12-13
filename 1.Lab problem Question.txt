@@ -1,0 +1,43 @@
+For final lab exam Microprocessor & Assembly language lab
+1. Write down a code “Hello World!” Print with appropriate message.
+2. Write down a code to Scan a character and print it in new line with appropriate message.
+3. Write a program to reverse a string with appropriate message.
+4. Write a program to convert an uppercase letter to lowercase letter with appropriate message.
+5. Write a program to print Hello World horizontally and vertically with appropriate message.
+6. Write a program to convert a lowercase letter to uppercase letter with appropriate message.
+7. Write a program to compare two numbers and print the greater one with appropriate messages.
+8. Write a program for the following pseudocode:
+CASE AX
+5< Print “Less than 5” 5=
+Print “Equal to 5” 5>
+Print “Greater than 5”
+9. Write a program which read a character and print it if it’s uppercase letter.
+10. Write a program which read a character and print it if it’s a lowercase letter.
+11. Write a program to find out a number is in the given range or not. If the number is between 5 to
+9 then print “Between ranges” otherwise print “Not in the range”.
+12. Write a program which read a character and if it’s a ‘y’ or ‘Y’ prints it otherwise terminate the
+program.
+13. Write a program which reads two numbers add the two numbers and show the results in the
+new line with appropriate messages.
+14. Write a program which reads two numbers subtract two numbers and show the result in
+the new line.
+15. Write a program that read alphabet randomly and print it in a alphanumeric order in the
+next line.
+16. Write a program to print 20 Star “*”.
+17. Write a program to print the following figure:
+*
+**
+***
+****
+18. Write a program for the following input output:
+Input: I AM STUDENT.
+Output: IAS
+19. Write a program that read character until a space is read.
+20. Write down a code all character Print but ‘Space ‘terminate.
+21. Write a program that read character until ‘Y’ is read using Repeat.
+22. Write a program for the following input output:
+Input: 23
+Output: 23
+Input: 41
+Output: 14
+23. Write a program to print the number of ‘X’ from a string sequence.
